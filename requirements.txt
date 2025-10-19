@@ -1,0 +1,15 @@
+pandas==2.3.3
+numpy==2.3.4
+matplotlib==3.10.7
+seaborn==0.13.2
+plotly==6.3.1
+sentence-transformers==5.1.1
+torch==2.9.0
+torchvision==0.24.0
+torchaudio==2.9.0
+transformers==4.57.1
+umap-learn>=0.5.9.post2
+ipykernel==7.0.1
+ipywidgets==8.1.7
+tqdm==4.67.1
+scikit-learn==1.7.2
