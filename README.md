@@ -13,6 +13,39 @@ This interactive Jupyter notebook teaches you how to build a **Retrieval-Augment
 - **Visualization**: Understanding embedding spaces with UMAP dimensionality reduction
 - **RAG Pipeline**: Constructing prompts for Large Language Models (LLMs)
 
+### RAG Pipeline Overview
+```mermaid
+graph TB
+    subgraph "Document Processing"
+        A[📄 Document] --> B[✂️ Chunking]
+        B --> C[🧮 Embedding Model]
+        C --> D[💾 Vector Storage<br/>DataFrame/Vector DB]
+    end
+    
+    subgraph "Query Processing"
+        E[❓ User Query] --> F[🧮 Embedding Model]
+    end
+    
+    subgraph "Retrieval"
+        F --> G[🔍 Similarity Search<br/>Cosine Similarity]
+        D --> G
+        G --> H[📊 Top-K Chunks<br/>or Threshold]
+    end
+    
+    subgraph "Generation"
+        H --> I[📝 Prompt Construction]
+        E --> I
+        I --> J[🤖 Large Language Model<br/>GPT-4, Claude, etc.]
+        J --> K[✨ Grounded Response]
+    end
+    
+    style A fill:#e1f5ff
+    style E fill:#fff4e1
+    style K fill:#e8f5e9
+    style D fill:#f3e5f5
+    style J fill:#fff9c4
+```
+
 ### Why RAG
 
 RAG systems combine a series of statistical and engineering concepts:
