@@ -7,15 +7,15 @@ This interactive Jupyter notebook teaches you how to build a **Retrieval-Augment
 
 ### What You'll Learn
 
-- 📚 **Document Processing**: How to chunk large documents for efficient retrieval
-- 🧮 **Embeddings**: Converting text into semantic vector representations
-- 🔍 **Similarity Search**: Finding relevant information using cosine similarity
-- 📊 **Visualization**: Understanding embedding spaces with UMAP dimensionality reduction
-- 🤖 **RAG Pipeline**: Constructing prompts for Large Language Models (LLMs)
+- **Document Processing**: How to chunk large documents for efficient retrieval
+- **Embeddings**: Converting text into semantic vector representations
+- **Similarity Search**: Finding relevant information using cosine similarity
+- **Visualization**: Understanding embedding spaces with UMAP dimensionality reduction
+- **RAG Pipeline**: Constructing prompts for Large Language Models (LLMs)
 
-### Why RAG Matters
+### Why RAG
 
-RAG systems are revolutionizing how we interact with information:
+RAG systems combine a series of statistical and engineering concepts:
 - **Reduces AI hallucinations** by grounding responses in actual documents
 - **Enables domain-specific AI** without retraining models
 - **Powers modern applications** like chatbots, research assistants, and Q&A systems
@@ -27,7 +27,7 @@ RAG systems are revolutionizing how we interact with information:
 
 ### Knowledge Requirements
 - Basic Python programming
-- Familiarity with pandas and numpy
+- Familiarity with Pandas and NumPy
 - Understanding of basic machine learning concepts (helpful but not required)
 
 ### Technical Requirements
@@ -50,8 +50,8 @@ conda create --name rag_msqe python=3.11
 # Activate the environment
 conda activate rag_msqe
 
-# Install required packages
 pip install -r requirements.txt
+# Install required packages
 
 # Install Jupyter kernel for this environment
 python -m ipykernel install --user --name=rag_msqe
@@ -61,6 +61,7 @@ python -m ipykernel install --user --name=rag_msqe
 - Prevents dependency conflicts with other projects
 - Ensures reproducibility across different machines
 - Makes it easy to share and deploy
+- Standard practice for codebases
 
 ### Step 2: Launch Jupyter
 ```bash
@@ -87,30 +88,30 @@ Start with the first cell and run sequentially:
 - **Ctrl/Cmd + Enter**: Run cell and stay
 - **Kernel → Restart & Run All**: Run entire notebook
 
-⚠️ **Important**: The first run will download embedding models (~100MB), which may take a few minutes.
+⚠️ **Important**: The first run will download embedding models, which may take some time
 
 ---
 
 ## Notebook Structure
 
 ### Section 0: Setup & Dependencies
-- Install and verify all required libraries
-- Check for GPU availability (optional but faster)
+- Verify all required libraries
+- Check for GPU availability (optional but potentially faster)
 
 ### Section 1: Document Ingestion
 - Load sample documents (Economics, Literature, Philosophy)
 - Understand document characteristics
 
-### Section 2: Document Chunking
+### Section 2: Document Chunking (Character)
 - Learn why chunking is necessary
 - Experiment with different chunk sizes and overlap
 
 ### Section 3: Chunk Embedding
-- Generate semantic embeddings using sentence transformers
-- Visualize individual embedding vectors
+- Generate semantic embeddings using the sentence-transformers package and an opensource embedding model
+- Visualize embedding vectors
 
 ### Section 4: Chunk Storage
-- Store embeddings in pandas DataFrames
+- Store embeddings in Pandas DataFrames
 - Understand similarity distributions
 - Visualize embeddings in 2D and 3D
 
@@ -136,14 +137,21 @@ Start with the first cell and run sequentially:
 ## Key Concepts Covered
 
 ### 1. Embeddings
-Dense vector representations that capture semantic meaning. Similar concepts have similar vectors.
+Dense vector representations that capture semantic meaning. Similar concepts (usually) have similar vectors
 
 ### 2. Cosine Similarity
 Measures the angle between two vectors to determine semantic similarity:
-```
-similarity = (A · B) / (||A|| ||B||)
-```
-Range: -1 (opposite) to 1 (identical)
+
+$$
+\text{cosine similarity} = \cos(\theta) = \frac{\mathbf{A} \cdot \mathbf{B}}{||\mathbf{A}|| \, ||\mathbf{B}||} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \sqrt{\sum_{i=1}^{n} B_i^2}}
+$$
+
+Where:
+- $\mathbf{A}$ and $\mathbf{B}$ are the embedding vectors
+- $n$ is the embedding dimension (384 or 768 in our case)
+- $A_i$ and $B_i$ are the $i$-th components of vectors $\mathbf{A}$ and $\mathbf{B}$
+
+**Range**: -1 (opposite) to 1 (identical)
 
 ### 3. UMAP (Uniform Manifold Approximation and Projection)
 Non-linear dimensionality reduction for visualizing high-dimensional embeddings in 2D/3D.
@@ -151,7 +159,7 @@ Non-linear dimensionality reduction for visualizing high-dimensional embeddings 
 ### 4. Top-K vs Threshold Retrieval
 - **Top-K**: Retrieve exactly k most similar chunks
 - **Threshold**: Retrieve all chunks above similarity threshold
-- **Combined**: Best of both worlds
+- **Combined**: Mixture of both
 
 ---
 
@@ -305,7 +313,7 @@ This notebook uses DataFrames for simplicity. Production systems use:
 - Use the experimentation section to explore
 
 ### Outside Class
-- Review the notebook's markdown explanations
+- Review the notebook's Markdown explanations
 - Check the troubleshooting section
 - Consult the documentation links provided
 
@@ -336,7 +344,3 @@ All dependencies are specified in `requirements.txt`:
 - Using NumPy 2.3.4 (may need to downgrade to <2.0 for compatibility)
 - PyTorch 2.9.0+ for optimal performance
 - sentence-transformers 5.1.1+ for latest features
-
----
-
-**Ready to build your first RAG system? Open `rag_tutorial.ipynb` and let's get started! 🚀**
