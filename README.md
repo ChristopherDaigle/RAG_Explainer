@@ -57,7 +57,7 @@ graph TB
 
 ### Why RAG
 
-RAG systems combine a series of statistical and engineering concepts:
+RAG systems combine a series of statistical and engineering concepts to create powerful applications:
 - **Reduces AI hallucinations** by grounding responses in actual documents
 - **Enables domain-specific AI** without retraining models
 - **Powers modern applications** like chatbots, research assistants, and Q&A systems
