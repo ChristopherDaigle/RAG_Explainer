@@ -14,6 +14,15 @@ This interactive Jupyter notebook teaches you how to build a **Retrieval-Augment
 - **RAG Pipeline**: Constructing prompts for Large Language Models (LLMs)
 
 ### RAG Pipeline Overview
+
+```
+Document → Chunking → Embedding → Storage
+                                     ↓
+Query → Embedding → Similarity Search → Top-K Chunks
+                                           ↓
+                              Prompt Construction → LLM → Response
+```
+
 ```mermaid
 graph TB
     subgraph "Document Processing"
@@ -53,15 +62,6 @@ RAG systems combine a series of statistical and engineering concepts:
 - **Enables domain-specific AI** without retraining models
 - **Powers modern applications** like chatbots, research assistants, and Q&A systems
 - **Critical skill** for data science and AI engineering careers
-
-### RAG Pipeline Overview
-```
-Document → Chunking → Embedding → Storage
-                                     ↓
-Query → Embedding → Similarity Search → Top-K Chunks
-                                           ↓
-                              Prompt Construction → LLM → Response
-```
 
 ---
 
